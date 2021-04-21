@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+  <h1>
+      诗歌首页
+  </h1>
+  <table>
+      <thead>
+            <th>诗歌标题</th>
+            <th>操作</th>
+
+      </thead>
+      <!--该模板接受的数据为poems诗歌数据列表-->
+      <tbody>
+            {% for poem in poems %}
+              <tr>
+                  <td>{{poem.title}}</td>
+                  <td>
+                      <a href="{% url 'poem:delete' poem.id %}">删除</a>
+                  </td>
+                  <td>
+                      <a href="{% url 'poem:edit' poem.id %}">修改</a>
+                  </td>
+              </tr>
+             {% endfor %}
+      </tbody>
+
+
+
+  </table>
+
+<a href="{% url 'poem:add' %}">添加诗歌</a>
+</body>
+</html>
